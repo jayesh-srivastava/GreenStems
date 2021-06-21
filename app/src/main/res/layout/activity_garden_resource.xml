@@ -1,0 +1,682 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.drawerlayout.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/homepage"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#FFFFFF"
+    android:fitsSystemWindows="true"
+    tools:context=".MainActivity">
+
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#ffffff"
+                android:orientation="vertical">
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_marginBottom="100dp">
+
+                    <LinearLayout
+                        android:id="@+id/rectangle"
+                        android:layout_width="match_parent"
+                        android:layout_height="170dp"
+                        android:background="@drawable/main_rec"
+                        android:orientation="vertical">
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:layout_gravity="center"
+                            android:layout_marginTop="50dp">
+
+                            <ImageView
+                                android:layout_width="80dp"
+                                android:layout_height="match_parent"
+                                android:src="@drawable/main"
+                                android:layout_marginLeft="5dp"/>
+
+                            <TextView
+
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="What a garden wants?
+                                What a garden needs?"
+                                android:textColor="@color/white"
+                                android:textSize="25dp"
+                                android:layout_marginLeft="20dp"
+
+                                android:fontFamily="@font/poppins">
+
+                            </TextView>
+
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/menu_container"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:layout_margin="10dp">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/poppins"
+                            android:textSize="15dp"
+                            android:textColor="@color/black"
+                            android:text="Plants are like people, but better. Each type of plant has a unique “personality” and likes different things (water, sunlight, soil type, different hats, etc.). Some plants like it hot and sunny, while others like it cooler or moister (or both).It’s fun, but meeting the needs of your seedlings can take a bit of experimentation (and internet research) to learn what works best for a particular type of plant. That being said, virtually all plants require a few basic ingredients:"
+                            />
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal"
+                                android:layout_marginTop="20dp"
+                                android:id="@+id/sunandwatercard">
+                                <ImageView
+                                    android:layout_width="150dp"
+                                    android:layout_height="100dp"
+                                    android:src="@drawable/sun"
+                                    android:background="@drawable/frame"/>
+                                <LinearLayout
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:orientation="vertical">
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:fontFamily="@font/poppins"
+                                        android:textSize="22dp"
+                                        android:textColor="@color/black"
+                                        android:text="Sun and Water"
+                                        android:layout_marginStart="25dp"
+                                        android:layout_marginTop="10dp"/>
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:fontFamily="@font/poppins"
+                                        android:textSize="15dp"
+                                        android:text="Tap here to view more"
+                                        android:textColor="#007bff"
+                                        android:layout_marginStart="25dp"
+                                        android:textAlignment="center"
+                                        android:clickable="true"
+                                        android:id="@+id/sunandwaterbutton"/>
+
+                                </LinearLayout>
+                            </LinearLayout>
+                            <RelativeLayout
+                                android:id="@+id/hiddensunandwater"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="vertical"
+                                android:background="@drawable/extra_big_box"
+                                android:visibility="gone">
+                                <LinearLayout
+                                    android:layout_width="30dp"
+                                    android:layout_height="match_parent"
+                                    android:layout_marginRight="5dp"
+                                    android:layout_alignParentRight="true">
+
+                                    <Button
+                                        android:id="@+id/sunandwater_minus_button"
+                                        android:layout_width="25dp"
+                                        android:layout_height="25dp"
+                                        android:layout_marginTop="10dp"
+                                        android:layout_gravity="center_vertical"
+                                        android:background="@drawable/minus"/>
+                                </LinearLayout>
+
+                                <RelativeLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent">
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:fontFamily="@font/poppins"
+                                        android:textSize="15dp"
+                                        android:layout_marginTop="40dp"
+                                        android:layout_marginStart="10dp"
+                                        android:layout_marginEnd="10dp"
+                                        android:layout_marginBottom="10dp"
+                                        android:text="Plants are pretty magical, as they harness energy from the sun and convert that energy into their tissues. Because plants need the sun to grow, many of them, including most fruits and veggies, need a good amount of direct sun during the day. Have a shadier plot? Research which plants prefer shady conditions if you have less light available. In many places, it may be necessary to water your garden regularly in order to keep plants happy. Consider your water sources. If they’re not close to your garden plot, it will be important to figure out a system for transporting water to your garden."
+                                        android:textColor="@color/teamname"/>
+                                </RelativeLayout>
+
+                            </RelativeLayout>
+
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal"
+                                android:layout_marginTop="20dp"
+                                android:id="@+id/soilcard">
+                                <ImageView
+                                    android:layout_width="150dp"
+                                    android:layout_height="100dp"
+                                    android:src="@drawable/soil"
+                                    android:background="@drawable/frame"/>
+                                <LinearLayout
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:orientation="vertical">
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:fontFamily="@font/poppins"
+                                        android:textSize="22dp"
+                                        android:textColor="@color/black"
+                                        android:text="Nutrients and Soil"
+                                        android:layout_marginStart="25dp"
+                                        android:layout_marginTop="10dp"/>
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:fontFamily="@font/poppins"
+                                        android:textSize="15dp"
+                                        android:text="Tap here to view more"
+                                        android:textColor="#007bff"
+                                        android:layout_marginStart="25dp"
+                                        android:textAlignment="center"
+                                        android:clickable="true"
+                                        android:id="@+id/soilbutton"/>
+
+                                </LinearLayout>
+                            </LinearLayout>
+                            <RelativeLayout
+                                android:id="@+id/hiddensoil"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="vertical"
+                                android:background="@drawable/extra_big_box"
+                                android:visibility="gone">
+                                <LinearLayout
+                                    android:layout_width="30dp"
+                                    android:layout_height="match_parent"
+                                    android:layout_marginRight="5dp"
+                                    android:layout_alignParentRight="true">
+
+                                    <Button
+                                        android:id="@+id/soil_minus_button"
+                                        android:layout_width="25dp"
+                                        android:layout_height="25dp"
+                                        android:layout_marginTop="10dp"
+                                        android:layout_gravity="center_vertical"
+                                        android:background="@drawable/minus"/>
+                                </LinearLayout>
+
+                                <RelativeLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent">
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:fontFamily="@font/poppins"
+                                        android:textSize="15dp"
+                                        android:layout_marginTop="40dp"
+                                        android:layout_marginStart="10dp"
+                                        android:layout_marginEnd="10dp"
+                                        android:layout_marginBottom="10dp"
+                                        android:text="Plants need nutrients like us as well. You might need to add nutrients manually if your garden isn’t already part of an annual crop rotation cycle. However, there’s a huge range of plant nutrients available to buy online. Unless you have experience (or special abilities we don’t know about), you won’t be able to tell if soil is fertile just by looking at it. Luckily, there are loads of DIY testing kits out there to show you how acidic or alkaline the soil is. Well, acidity for most plants should be between a pH of 6.1 and 7.0. Highly acidic soil means that all those yummy nutrients dissolve and flow away from the soil. And if it's too alkaline, plants have less access to vital minerals."
+                                        android:textColor="@color/teamname"/>
+                                </RelativeLayout>
+
+                            </RelativeLayout>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal"
+                                android:layout_marginTop="20dp"
+                                android:id="@+id/zonecard">
+                                <ImageView
+                                    android:layout_width="150dp"
+                                    android:layout_height="100dp"
+                                    android:src="@drawable/gettinginthezone"
+                                    android:background="@drawable/frame"/>
+                                <LinearLayout
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:orientation="vertical">
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:fontFamily="@font/poppins"
+                                        android:textSize="22dp"
+                                        android:textColor="@color/black"
+                                        android:text="Getting in the zone"
+                                        android:layout_marginStart="25dp"
+                                        android:layout_marginTop="10dp"/>
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:fontFamily="@font/poppins"
+                                        android:textSize="15dp"
+                                        android:text="Tap here to view more"
+                                        android:textColor="#007bff"
+                                        android:layout_marginStart="25dp"
+                                        android:textAlignment="center"
+                                        android:clickable="true"
+                                        android:id="@+id/zonebutton"/>
+
+                                </LinearLayout>
+                            </LinearLayout>
+                            <RelativeLayout
+                                android:id="@+id/hiddenzone"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="vertical"
+                                android:background="@drawable/extra_big_box"
+                                android:visibility="gone">
+                                <LinearLayout
+                                    android:layout_width="30dp"
+                                    android:layout_height="match_parent"
+                                    android:layout_marginRight="5dp"
+                                    android:layout_alignParentRight="true">
+
+                                    <Button
+                                        android:id="@+id/zone_minus_button"
+                                        android:layout_width="25dp"
+                                        android:layout_height="25dp"
+                                        android:layout_marginTop="10dp"
+                                        android:layout_gravity="center_vertical"
+                                        android:background="@drawable/minus"/>
+                                </LinearLayout>
+
+                                <RelativeLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent">
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:fontFamily="@font/poppins"
+                                        android:textSize="15dp"
+                                        android:layout_marginTop="40dp"
+                                        android:layout_marginStart="10dp"
+                                        android:layout_marginEnd="10dp"
+                                        android:layout_marginBottom="10dp"
+                                        android:text="Plants perform best when they have optimum temperatures for growth.Understanding your climate will help you decide which plants to grow. This information is generally available for seeds and plants that you buy online to help you decide what will work best. To better understand your climate, get familiar with the plant hardiness zones. They’re based on the coldest winter temperatures, which will help you determine which plants are likely to do best in a particular location. This information is especially useful for growing perennial plants — that is, plants like trees, shrubs, and many flowers that can live for several years."
+                                        android:textColor="@color/teamname"/>
+                                </RelativeLayout>
+
+                            </RelativeLayout>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal"
+                                android:layout_marginTop="20dp"
+                                android:id="@+id/growcard">
+                                <ImageView
+                                    android:layout_width="150dp"
+                                    android:layout_height="100dp"
+                                    android:src="@drawable/growing"
+                                    android:background="@drawable/frame"/>
+                                <LinearLayout
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:orientation="vertical">
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:fontFamily="@font/poppins"
+                                        android:textSize="22dp"
+                                        android:textColor="@color/black"
+                                        android:text="Growing Season"
+                                        android:layout_marginStart="25dp"
+                                        android:layout_marginTop="10dp"/>
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:fontFamily="@font/poppins"
+                                        android:textSize="15dp"
+                                        android:text="Tap here to view more"
+                                        android:textColor="#007bff"
+                                        android:layout_marginStart="25dp"
+                                        android:textAlignment="center"
+                                        android:clickable="true"
+                                        android:id="@+id/growbutton"/>
+
+                                </LinearLayout>
+                            </LinearLayout>
+                            <RelativeLayout
+                                android:id="@+id/hiddengrow"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="vertical"
+                                android:background="@drawable/extra_big_box"
+                                android:visibility="gone">
+                                <LinearLayout
+                                    android:layout_width="30dp"
+                                    android:layout_height="match_parent"
+                                    android:layout_marginRight="5dp"
+                                    android:layout_alignParentRight="true">
+
+                                    <Button
+                                        android:id="@+id/grow_minus_button"
+                                        android:layout_width="25dp"
+                                        android:layout_height="25dp"
+                                        android:layout_marginTop="10dp"
+                                        android:layout_gravity="center_vertical"
+                                        android:background="@drawable/minus"/>
+                                </LinearLayout>
+
+                                <RelativeLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent">
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:fontFamily="@font/poppins"
+                                        android:textSize="15dp"
+                                        android:layout_marginTop="40dp"
+                                        android:layout_marginStart="10dp"
+                                        android:layout_marginEnd="10dp"
+                                        android:layout_marginBottom="10dp"
+                                        android:text="The length of a plant’s growing season is another handy piece of information. It’s the average amount of time per year where the temperature stays above freezing during both day and night. Knowing about the growing season is particularly useful for planting annual plants, including most garden vegetables and many flowers, which live for only a single year. If you want to plant melons, for example, you’ll want to make sure that you can find a variety of melons that can grow fully within the length of your growing season."
+                                        android:textColor="@color/teamname"/>
+                                </RelativeLayout>
+
+                            </RelativeLayout>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal"
+                                android:layout_marginTop="20dp"
+                                android:id="@+id/locationcard">
+                                <ImageView
+                                    android:layout_width="150dp"
+                                    android:layout_height="100dp"
+                                    android:src="@drawable/location"
+                                    android:background="@drawable/frame"/>
+                                <LinearLayout
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:orientation="vertical">
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:fontFamily="@font/poppins"
+                                        android:textSize="22dp"
+                                        android:textColor="@color/black"
+                                        android:text="Location, Location"
+                                        android:layout_marginStart="25dp"
+                                        android:layout_marginTop="10dp"/>
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:fontFamily="@font/poppins"
+                                        android:textSize="15dp"
+                                        android:text="Tap here to view more"
+                                        android:textColor="#007bff"
+                                        android:layout_marginStart="25dp"
+                                        android:textAlignment="center"
+                                        android:clickable="true"
+                                        android:id="@+id/locationbutton"/>
+
+                                </LinearLayout>
+                            </LinearLayout>
+                            <RelativeLayout
+                                android:id="@+id/hiddenlocation"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="vertical"
+                                android:background="@drawable/extra_big_box"
+                                android:visibility="gone">
+                                <LinearLayout
+                                    android:layout_width="30dp"
+                                    android:layout_height="match_parent"
+                                    android:layout_marginRight="5dp"
+                                    android:layout_alignParentRight="true">
+
+                                    <Button
+                                        android:id="@+id/location_minus_button"
+                                        android:layout_width="25dp"
+                                        android:layout_height="25dp"
+                                        android:layout_marginTop="10dp"
+                                        android:layout_gravity="center_vertical"
+                                        android:background="@drawable/minus"/>
+                                </LinearLayout>
+
+                                <RelativeLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent">
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:fontFamily="@font/poppins"
+                                        android:textSize="15dp"
+                                        android:layout_marginTop="40dp"
+                                        android:layout_marginStart="10dp"
+                                        android:layout_marginEnd="10dp"
+                                        android:layout_marginBottom="10dp"
+                                        android:text="Gardens come in all shapes and sizes, so it’s just a matter of figuring out what will work for you and what’s within. In fact, gardening doesn’t even have to be an outside thing — growing plants indoors can provide many of the same stress-reducing benefits as gardening outside, while also improving indoor air quality. Indoor plant cultivation is easier than you’d think. If you’re growing plants outdoors, try to choose a spot that optimizes all those things that plants need — light, water, nutrients, and good soil."
+                                        android:textColor="@color/teamname"/>
+                                </RelativeLayout>
+
+                            </RelativeLayout>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal"
+                                android:layout_marginTop="20dp"
+                                android:id="@+id/watercard">
+                                <ImageView
+                                    android:layout_width="150dp"
+                                    android:layout_height="100dp"
+                                    android:src="@drawable/watering"
+                                    android:background="@drawable/frame"/>
+                                <LinearLayout
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:orientation="vertical">
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:fontFamily="@font/poppins"
+                                        android:textSize="22dp"
+                                        android:textColor="@color/black"
+                                        android:text="Watering Strategy"
+                                        android:layout_marginStart="25dp"
+                                        android:layout_marginTop="10dp"/>
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:fontFamily="@font/poppins"
+                                        android:textSize="15dp"
+                                        android:text="Tap here to view more"
+                                        android:textColor="#007bff"
+                                        android:layout_marginStart="25dp"
+                                        android:textAlignment="center"
+                                        android:clickable="true"
+                                        android:id="@+id/waterbutton"/>
+
+                                </LinearLayout>
+                            </LinearLayout>
+                            <RelativeLayout
+                                android:id="@+id/hiddenwater"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="vertical"
+                                android:background="@drawable/extra_big_box"
+                                android:visibility="gone">
+                                <LinearLayout
+                                    android:layout_width="30dp"
+                                    android:layout_height="match_parent"
+                                    android:layout_marginRight="5dp"
+                                    android:layout_alignParentRight="true">
+
+                                    <Button
+                                        android:id="@+id/water_minus_button"
+                                        android:layout_width="25dp"
+                                        android:layout_height="25dp"
+                                        android:layout_marginTop="10dp"
+                                        android:layout_gravity="center_vertical"
+                                        android:background="@drawable/minus"/>
+                                </LinearLayout>
+
+                                <RelativeLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent">
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:fontFamily="@font/poppins"
+                                        android:textSize="15dp"
+                                        android:layout_marginTop="40dp"
+                                        android:layout_marginStart="10dp"
+                                        android:layout_marginEnd="10dp"
+                                        android:layout_marginBottom="10dp"
+                                        android:text="The ideal amount of water plants need varies and depends on a few factors. Hotter and drier air will pull moisture from plants and soils more quickly, so more watering will be necessary as the temperatures climb. The type of soil you have in your garden will also affect how much water is available to plants. A good rule of (green) thumb is that plants should guzzle up enough water to cover the ground with an inch of water each week. It’s also better for plants to get all the water one or two times per week rather than a little bit each day. Think of it as intermittent fasting for plants. When watering, it’s best to use a watering can or sprinkler, as dumping a lot of water on the plants all at once can damage them."
+                                        android:textColor="@color/teamname"/>
+                                </RelativeLayout>
+
+                            </RelativeLayout>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal"
+                                android:layout_marginTop="20dp"
+                                android:id="@+id/protectcard">
+                                <ImageView
+                                    android:layout_width="150dp"
+                                    android:layout_height="100dp"
+                                    android:src="@drawable/protect"
+                                    android:background="@drawable/frame"/>
+                                <LinearLayout
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:orientation="vertical">
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:fontFamily="@font/poppins"
+                                        android:textSize="22dp"
+                                        android:textColor="@color/black"
+                                        android:text="Protect your plants"
+                                        android:layout_marginStart="25dp"
+                                        android:layout_marginTop="10dp"/>
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:fontFamily="@font/poppins"
+                                        android:textSize="15dp"
+                                        android:text="Tap here to view more"
+                                        android:textColor="#007bff"
+                                        android:layout_marginStart="25dp"
+                                        android:textAlignment="center"
+                                        android:clickable="true"
+                                        android:id="@+id/protectbutton"/>
+
+                                </LinearLayout>
+                            </LinearLayout>
+                            <RelativeLayout
+                                android:id="@+id/hiddenprotect"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="vertical"
+                                android:background="@drawable/extra_big_box"
+                                android:visibility="gone">
+                                <LinearLayout
+                                    android:layout_width="30dp"
+                                    android:layout_height="match_parent"
+                                    android:layout_marginRight="5dp"
+                                    android:layout_alignParentRight="true">
+
+                                    <Button
+                                        android:id="@+id/protect_minus_button"
+                                        android:layout_width="25dp"
+                                        android:layout_height="25dp"
+                                        android:layout_marginTop="10dp"
+                                        android:layout_gravity="center_vertical"
+                                        android:background="@drawable/minus"/>
+                                </LinearLayout>
+
+                                <RelativeLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent">
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:fontFamily="@font/poppins"
+                                        android:textSize="15dp"
+                                        android:layout_marginTop="40dp"
+                                        android:layout_marginStart="10dp"
+                                        android:layout_marginEnd="10dp"
+                                        android:layout_marginBottom="10dp"
+                                        android:text="Once your plants are flourishing, one of the biggest challenges is keeping weeds, pests, and diseases out of the garden. To a certain extent, weeds are inevitable, and that’s okay — so long as they don’t start choking out your plants. In general, it’s easier to pull weeds out of the ground when soils are wetter. Many bugs and diseases that cause damage to plants are more likely to occur when plants are stressed, so a good supply of sun, water, and nutrients will reduce other gardening difficulties. There are many organic options for preventing and controlling garden pests and diseases, so you needn’t go down the pesticide route."
+                                        android:textColor="@color/teamname"/>
+                                </RelativeLayout>
+
+                            </RelativeLayout>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/poppins"
+                            android:layout_marginTop="40dp"
+                            android:textSize="15dp"
+                            android:text="If you want to know more about gardening then tap on the below link -"
+                            android:textColor="@color/black"/>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textSize="15dp"
+                            android:fontFamily="@font/poppins"
+                            android:textColor="#007bff"
+                            android:text="https://www.bigblogofgardening.com/"
+                            android:clickable="true"
+                            android:id="@+id/link_button"/>
+
+
+
+
+
+
+
+
+
+
+                    </LinearLayout>
+
+
+                </LinearLayout>
+
+
+            </LinearLayout>
+
+
+
+        </ScrollView>
+
+
+
+    </RelativeLayout>
+
+
+
+</androidx.drawerlayout.widget.DrawerLayout>
