@@ -90,13 +90,23 @@
 
                     </LinearLayout>
 
-
+                    <Button
+                        android:layout_width="120dp"
+                        android:layout_height="50dp"
+                        android:background="@drawable/resource"
+                        android:text="Show Results"
+                        android:textAllCaps="false"
+                        android:textColor="@color/white"
+                        android:fontFamily="@font/poppins"
+                        android:textSize="15dp"
+                        android:layout_gravity="center"
+                        android:id="@+id/showresultssoil"/>
 
                     <TextView
                         android:id="@+id/resulttextsoil"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Rose - 98%"
+                        android:text=""
                         android:fontFamily="@font/poppins"
                         android:textColor="@color/black"
                         android:textSize="25dp"

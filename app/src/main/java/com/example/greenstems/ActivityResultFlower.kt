@@ -1,73 +1,114 @@
 package com.example.greenstems
 
-import android.annotation.SuppressLint
-import android.content.Context
+import android.app.Activity
 import android.graphics.Bitmap
-import android.graphics.Matrix
-import android.icu.util.ULocale
 import android.net.Uri
+import android.os.Build
 import android.os.Bundle
 import android.os.Parcelable
 import android.provider.MediaStore
-import android.speech.RecognitionListener
-import android.util.Log
 import android.view.View
+import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
-import androidx.camera.core.ImageAnalysis
-import androidx.camera.core.ImageProxy
-import com.bumptech.glide.Glide
+import com.bumptech.glide.load.resource.bitmap.BitmapTransitionOptions
 import org.tensorflow.lite.Interpreter
-import kotlin.random.Random
-
+import org.tensorflow.lite.support.common.TensorProcessor
 import org.tensorflow.lite.support.image.TensorImage
-import java.util.*
-
+import org.tensorflow.lite.support.tensorbuffer.TensorBuffer
+import com.example.greenstems.ml.Flowermodel
+import org.tensorflow.lite.DataType
+import java.nio.ByteBuffer
+import java.nio.FloatBuffer
 
 class ActivityResultFlower : AppCompatActivity() {
-    var result: TextView? = null
+    lateinit var result: TextView
     var image: ImageView? = null
+    lateinit var show: Button
 
-    private var bitmap: Bitmap? = null
-    private var uri: String? = null
-    public var bitmapCamera: Bitmap? = null
-    public var bitmapGallery: Bitmap? = null
+    var bitmapCamera: Bitmap? = null
+    var bitmapGallery: Bitmap? = null
 
-    protected var tflite: Interpreter
+    var bitmapGallerycopy: Bitmap?=null
+
+    @RequiresApi(Build.VERSION_CODES.N)
     public override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activityresultflower)
         result = findViewById(R.id.resulttext)
         image = findViewById<View>(R.id.imageresult) as ImageView
-
+        show=findViewById(R.id.showresultsflower)
 
         val bundle = getIntent().getExtras();
         if (bundle != null) {
-            val intent = intent
 
             //BITMAP FROM CAMERA
             bitmapCamera = intent.getParcelableExtra<Parcelable>("sendImage") as Bitmap?
-            uri = bundle.getString("selectedImage")
-            val uriGallery: Uri = Uri.parse(uri)
 
-            //BITMAP FROM GALLERY
-            bitmapGallery = MediaStore.Images.Media.getBitmap(this.contentResolver, uriGallery)
+            if (bitmapCamera == null) {
+                var uri: String? = bundle.getString("selectedImage")
+                var uriGallery: Uri? = Uri.parse(uri!!)
+                //BITMAP FROM GALLERY
+                bitmapGallery = MediaStore.Images.Media.getBitmap(this.contentResolver, uriGallery)
+                bitmapGallerycopy=bitmapGallery?.copy(bitmapGallery?.config,true)
+            }
 
-            if (bitmap != null)
-                image!!.setImageBitmap(bitmap)
-            else
-                Glide.with(this).load(uri).into(image!!)
-        }
+            if (bitmapCamera != null)
+                image!!.setImageBitmap(bitmapCamera)
+            else {
+                image!!.setImageBitmap(bitmapGallerycopy)
+            }
+
+            val labels = application.assets.open("labels_flower.txt").bufferedReader().use { it.readText() }.split("\n")
+
+            show.setOnClickListener(View.OnClickListener {
+                var resized =
+                    bitmapGallerycopy?.let { it1 -> Bitmap.createScaledBitmap(it1, 224, 224, true) }
+                val model = Flowermodel.newInstance(this)
 
 
-        try {
-            tflite=Interpreter()
-        }
-        catch (Exception e)
-        {
-            e.printStackTrace();
+                val inputFeature0 = TensorBuffer.createFixedSize(intArrayOf(1, 224, 224, 3), DataType.FLOAT32)
+
+                var tensorImage: TensorImage= TensorImage(DataType.FLOAT32)
+                tensorImage.load(resized)
+
+                var byteBuffer: ByteBuffer=tensorImage.buffer
+                inputFeature0.loadBuffer(byteBuffer)
+
+                val outputs = model.process(inputFeature0)
+                val outputFeature0 = outputs.outputFeature0AsTensorBuffer
+
+                var max = getMax(outputFeature0.floatArray)
+
+                result.setText(labels[max])
+
+                model.close()
+            })
+
         }
     }
+
+    fun getMax(arr:FloatArray) : Int{
+        var ind = 0;
+        var min = 0.0f;
+
+        for(i in 0..4)
+        {
+            if(arr[i] > min)
+            {
+                min = arr[i]
+                ind = i;
+            }
+        }
+        return ind
+    }
+
 }
+
+
+
+
+
 

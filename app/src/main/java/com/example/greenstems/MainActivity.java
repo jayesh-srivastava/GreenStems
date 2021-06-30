@@ -145,8 +145,8 @@ public class MainActivity extends AppCompatActivity {
             else if (options[which].equals("Choose From Gallery"))
             {
                 Intent pickphoto = new Intent();
-                pickphoto.setType("image/*");
                 pickphoto.setAction(Intent.ACTION_GET_CONTENT);
+                pickphoto.setType("image/*");
                 startActivityForResult(pickphoto,14);
             }
             else if(options[which].equals("Cancel"))

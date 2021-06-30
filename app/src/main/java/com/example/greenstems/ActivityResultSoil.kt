@@ -1,41 +1,102 @@
 package com.example.greenstems
 
 import android.graphics.Bitmap
+import android.net.Uri
 import android.os.Bundle
 import android.os.Parcelable
+import android.provider.MediaStore
 import android.view.View
+import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import com.bumptech.glide.Glide
 import com.example.greenstems.R.layout.activityresultsoil
+import com.example.greenstems.ml.SoilModel
+import org.tensorflow.lite.DataType
+import org.tensorflow.lite.support.image.TensorImage
+import org.tensorflow.lite.support.tensorbuffer.TensorBuffer
+import java.nio.ByteBuffer
 
 class ActivityResultSoil: AppCompatActivity()
 {
-    var result: TextView? = null
+    lateinit var result: TextView
     var image: ImageView? = null
+    lateinit var show: Button
 
-    private var bitmap: Bitmap? = null
-    private var uri: String? = null
+    var bitmapCamera: Bitmap?=null
+    var bitmapGallery: Bitmap?=null
 
     public override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(activityresultsoil)
+        setContentView(R.layout.activityresultsoil)
         result = findViewById(R.id.resulttextsoil)
         image = findViewById<View>(R.id.imageresult) as ImageView
-
+        show=findViewById(R.id.showresultssoil)
 
         val bundle = getIntent().getExtras();
         if (bundle != null) {
-            val intent = intent
-            val bitmap = intent.getParcelableExtra<Parcelable>("sendImage") as Bitmap?
-            uri = bundle.getString("selectedImage")
 
-            if (bitmap != null)
-                image!!.setImageBitmap(bitmap)
+            //BITMAP FROM CAMERA
+            bitmapCamera = intent.getParcelableExtra<Parcelable>("sendImage") as Bitmap?
+
+            if(bitmapCamera==null)
+            {
+                var uri:String? = bundle.getString("selectedImage")
+                var uriGallery: Uri? = Uri.parse(uri!!)
+                //BITMAP FROM GALLERY
+                bitmapGallery = MediaStore.Images.Media.getBitmap(this.contentResolver, uriGallery)
+            }
+
+
+            if (bitmapCamera != null)
+                image!!.setImageBitmap(bitmapCamera)
             else
-                Glide.with(this).load(uri).into(image!!)
+                image!!.setImageBitmap(bitmapGallery)
         }
 
+
+        val labels = application.assets.open("labels_soil.txt").bufferedReader().use { it.readText() }.split("\n")
+
+        show.setOnClickListener(View.OnClickListener {
+            var resized = bitmapGallery?.let { it1 -> Bitmap.createScaledBitmap(it1, 200, 200, true) }
+            val model = SoilModel.newInstance(this)
+
+
+            val inputFeature0 = TensorBuffer.createFixedSize(intArrayOf(1, 200, 200, 3), DataType.FLOAT32)
+            var tensorImage: TensorImage= TensorImage(DataType.FLOAT32)
+            tensorImage.load(resized)
+
+            var byteBuffer: ByteBuffer =tensorImage.buffer
+
+            inputFeature0.loadBuffer(byteBuffer)
+
+            val outputs = model.process(inputFeature0)
+            val outputFeature0 = outputs.outputFeature0AsTensorBuffer
+
+            var max = getMax(outputFeature0.floatArray)
+
+            result.setText(labels[max])
+
+            model.close()
+        })
+
     }
+
+
+    fun getMax(arr:FloatArray) : Int{
+        var ind = 0;
+        var min = 0.0f;
+
+        for(i in 0..4)
+        {
+            if(arr[i] > min)
+            {
+                min = arr[i]
+                ind = i;
+            }
+        }
+        return ind
+    }
+
 }

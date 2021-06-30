@@ -1,8 +1,10 @@
 package com.example.greenstems
 
 import android.graphics.Bitmap
+import android.net.Uri
 import android.os.Bundle
 import android.os.Parcelable
+import android.provider.MediaStore
 import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
@@ -15,27 +17,33 @@ class ActivityResultDisease:AppCompatActivity()
     var result: TextView? = null
     var image: ImageView? = null
 
-    private var bitmap: Bitmap? = null
-    private var uri: String? = null
+    var bitmapCamera: Bitmap? = null
+    var bitmapGallery: Bitmap? = null
 
     public override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(activityresultdisease)
+        setContentView(R.layout.activityresultdisease)
         result = findViewById(R.id.resulttextdisease)
         image = findViewById<View>(R.id.imageresult) as ImageView
 
-
         val bundle = getIntent().getExtras();
         if (bundle != null) {
-            val intent = intent
-            val bitmap = intent.getParcelableExtra<Parcelable>("sendImage") as Bitmap?
-            uri = bundle.getString("selectedImage")
 
-            if (bitmap != null)
-                image!!.setImageBitmap(bitmap)
+            //BITMAP FROM CAMERA
+            var bitmapCamera = intent.getParcelableExtra<Parcelable>("sendImage") as Bitmap?
+
+            if (bitmapCamera == null) {
+                var uri: String? = bundle.getString("selectedImage")
+                var uriGallery: Uri? = Uri.parse(uri!!)
+                //BITMAP FROM GALLERY
+                bitmapGallery = MediaStore.Images.Media.getBitmap(this.contentResolver, uriGallery)
+            }
+
+
+            if (bitmapCamera != null)
+                image!!.setImageBitmap(bitmapCamera)
             else
-                Glide.with(this).load(uri).into(image!!)
+                image!!.setImageBitmap(bitmapGallery)
         }
-
     }
 }
