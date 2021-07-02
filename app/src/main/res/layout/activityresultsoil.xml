@@ -114,8 +114,8 @@
                         android:layout_marginStart="10dp"/>
 
                     <ImageView
-                        android:layout_width="400dp"
-                        android:layout_height="600dp"
+                        android:layout_width="329dp"
+                        android:layout_height="373dp"
                         android:src="@drawable/sun"
                         android:layout_marginTop="30dp"
                         android:layout_marginStart="10dp"

@@ -17,6 +17,7 @@ import org.tensorflow.lite.support.tensorbuffer.TensorBuffer
 import com.example.greenstems.ml.Flowermodel
 import org.tensorflow.lite.DataType
 import java.nio.ByteBuffer
+import java.nio.Buffer
 
 class ActivityResultFlower : AppCompatActivity() {
     lateinit var result: TextView
@@ -55,7 +56,8 @@ class ActivityResultFlower : AppCompatActivity() {
 
             image!!.setImageBitmap(bitmapcopy)
 
-            val labels = application.assets.open("labels_flower.txt").bufferedReader().use { it.readText() }.split("\n")
+            val labels = application.assets.open("labels_flower.txt").bufferedReader().use { it.readText()}
+            val labelfile=labels.split("\n")
 
             show.setOnClickListener(View.OnClickListener {
                 var resized =
@@ -65,10 +67,10 @@ class ActivityResultFlower : AppCompatActivity() {
 
                 val inputFeature0 = TensorBuffer.createFixedSize(intArrayOf(1, 224, 224, 3), DataType.FLOAT32)
 
-                var tensorImage: TensorImage= TensorImage(DataType.FLOAT32)
-                tensorImage.load(resized)
-
-                var byteBuffer: ByteBuffer=tensorImage.buffer
+                var tBuffer = TensorImage.fromBitmap(resized)
+                //var byteBuffer =tBuffer.buffer
+                val byteBuffer = ByteBuffer.allocateDirect(1*224*224*3*4)
+                byteBuffer.put(tBuffer.buffer)
                 inputFeature0.loadBuffer(byteBuffer)
 
                 val outputs = model.process(inputFeature0)
@@ -76,7 +78,7 @@ class ActivityResultFlower : AppCompatActivity() {
 
                 var max = getMax(outputFeature0.floatArray)
 
-                result.setText(labels[max])
+                result.setText(labelfile[max])
 
                 model.close()
             })

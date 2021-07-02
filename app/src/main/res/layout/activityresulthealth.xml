@@ -91,12 +91,22 @@
                     </LinearLayout>
 
 
-
+                    <Button
+                        android:layout_width="120dp"
+                        android:layout_height="50dp"
+                        android:background="@drawable/resource"
+                        android:text="Show Results"
+                        android:textAllCaps="false"
+                        android:textColor="@color/white"
+                        android:fontFamily="@font/poppins"
+                        android:textSize="15dp"
+                        android:layout_gravity="center"
+                        android:id="@+id/showresultshealth"/>
                     <TextView
                         android:id="@+id/resulttexthealth"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Rose - 98%"
+                        android:text=""
                         android:fontFamily="@font/poppins"
                         android:textColor="@color/black"
                         android:textSize="25dp"
@@ -104,8 +114,8 @@
                         android:layout_marginStart="10dp"/>
 
                     <ImageView
-                        android:layout_width="400dp"
-                        android:layout_height="600dp"
+                        android:layout_width="329dp"
+                        android:layout_height="373dp"
                         android:src="@drawable/sun"
                         android:layout_marginTop="30dp"
                         android:layout_marginStart="10dp"
