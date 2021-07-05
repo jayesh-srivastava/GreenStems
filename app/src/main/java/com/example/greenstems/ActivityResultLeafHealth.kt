@@ -5,6 +5,8 @@ import android.net.Uri
 import android.os.Bundle
 import android.os.Parcelable
 import android.provider.MediaStore
+import android.util.Log
+import android.util.Log.ASSERT
 import android.view.View
 import android.widget.Button
 import android.widget.ImageView
@@ -12,8 +14,7 @@ import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import com.bumptech.glide.Glide
 import com.example.greenstems.R.layout.activityresulthealth
-import com.example.greenstems.ml.Flowermodel
-import com.example.greenstems.ml.LeavesHealthModel
+import com.example.greenstems.ml.Leaveshealthmodel1
 import org.tensorflow.lite.DataType
 import org.tensorflow.lite.support.image.TensorImage
 import org.tensorflow.lite.support.tensorbuffer.TensorBuffer
@@ -64,7 +65,7 @@ class ActivityResultLeafHealth:AppCompatActivity()
         show.setOnClickListener(View.OnClickListener {
             var resized =
                 bitmapcopy?.let { it1 -> Bitmap.createScaledBitmap(it1, 200, 200, true) }
-            val model = LeavesHealthModel.newInstance(this)
+            val model = Leaveshealthmodel1.newInstance(this)
 
 
             val inputFeature0 = TensorBuffer.createFixedSize(intArrayOf(1, 200, 200, 3), DataType.FLOAT32)
@@ -79,7 +80,7 @@ class ActivityResultLeafHealth:AppCompatActivity()
             val outputFeature0 = outputs.outputFeature0AsTensorBuffer
 
             var max = getMax(outputFeature0.floatArray)
-
+            print("***********"+max)
             result.setText(labelfile[max])
 
             model.close()
@@ -99,6 +100,8 @@ class ActivityResultLeafHealth:AppCompatActivity()
                 ind = i;
             }
         }
+
+        Log.e("VALLLLLUUUUUEEEEEEEEEEE", min.toString())
         return ind
     }
 

@@ -13,6 +13,7 @@ import android.widget.TextView
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import org.tensorflow.lite.support.image.TensorImage
+import org.tensorflow.lite.support.model.Model
 import org.tensorflow.lite.support.tensorbuffer.TensorBuffer
 import com.example.greenstems.ml.Flowermodel
 import org.tensorflow.lite.DataType
@@ -62,6 +63,8 @@ class ActivityResultFlower : AppCompatActivity() {
             show.setOnClickListener(View.OnClickListener {
                 var resized =
                     bitmapcopy?.let { it1 -> Bitmap.createScaledBitmap(it1, 224, 224, true) }
+
+                val options= Model.Options.Builder().setDevice(Model.Device.GPU).build()
                 val model = Flowermodel.newInstance(this)
 
 
@@ -92,8 +95,7 @@ class ActivityResultFlower : AppCompatActivity() {
 
         for(i in 0..4)
         {
-            if(arr[i] > min)
-            {
+            if(arr[i] > min) {
                 min = arr[i]
                 ind = i;
             }
