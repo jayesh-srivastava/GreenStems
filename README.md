@@ -7,6 +7,8 @@ So Green Stems is an application built with AI capabilities for disease detectio
 ### Application developed by  [@jayesh-srivastava](https://github.com/jayesh-srivastava)
 ### Tflite models trained by  [@Sara-cos](https://github.com/Sara-cos) and [@mansijain014](https://github.com/mansijain014) 
 
+
+
 ### Note
 The dataset is still not as accurate as it should be to predict every possible plant species. It will be improved and used to train the model to get the best results for all possible local plants found in the garden.
 We're also planning to add a feature to connect with local peers for gardening sessions and meetups to build local communities to spread awareness.
