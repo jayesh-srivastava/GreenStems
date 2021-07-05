@@ -8,7 +8,7 @@
     android:orientation="vertical"
     android:background="#FFFFFF"
     android:fitsSystemWindows="true"
-    tools:context=".MainActivity">
+    tools:context=".GardenResource">
 
 
 
