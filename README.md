@@ -15,5 +15,5 @@ We're also planning to add a feature to connect with local peers for gardening s
 
 
 
-<img src="https://github.com/jayesh-srivastava/GreenStems/blob/main/Assets/device-2021-07-05-145648_framed.png" width="30%">&ensp; <img src="https://github.com/jayesh-srivastava/GreenStems/blob/main/Assets/device-2021-07-05-145820_framed.png" width="30%">&ensp; 
+<img src="https://github.com/jayesh-srivastava/GreenStems/blob/main/Assets/device-2021-07-05-145648_framed.png" width="28%">&ensp; <img src="https://github.com/jayesh-srivastava/GreenStems/blob/main/Assets/device-2021-07-05-145820_framed.png" width="28%">&ensp; 
 
