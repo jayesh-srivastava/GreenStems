@@ -7,7 +7,7 @@ So Green Stems is an application built with AI capabilities for disease detectio
 <br />
 
 ### Application developed by : [@jayesh-srivastava](https://github.com/jayesh-srivastava)
-### Tflite models trained by : [@Sara-cos](https://github.com/Sara-cos) and [@mansijain014](https://github.com/mansijain014) 
+### Tflite Models trained by : [@Sara-cos](https://github.com/Sara-cos) and [@mansijain014](https://github.com/mansijain014) 
 
 <br />
 
