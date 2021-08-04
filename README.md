@@ -3,6 +3,7 @@
 As we know maintaining a healthy garden is tough and needs a lot of care and nourishing to have good and healthy growth. Sometimes the early sign of any disease or anomaly in health is left unobserved, which leads to the death of those saplings. There is a need for early detection of any disease and medication. Also with the health circle, sometimes the identification of those saplings remains undone, leading to a lack of right remediation. So, there was a need for an overall app that can take care of all these needs.
 
 So Green Stems is an application built with AI capabilities for disease detection, health detection, flower species identification and soil identification for better care and nourishment of our plants. You can either take a picture or load an image from the gallery and know the results of your scan. There is also has a page dedicated to gardening articles and blogs for the overall care of the plants and greenery that can help newbie gardeners kick-starting their gardening journey.
+####(Built as a hackathon project for Garden Hacks by MLH)
 
 <br />
 
