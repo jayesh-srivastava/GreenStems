@@ -4,7 +4,7 @@ As we know maintaining a healthy garden is tough and needs a lot of care and nou
 
 So Green Stems is an application built with AI capabilities for disease detection, health detection, flower species identification and soil identification for better care and nourishment of our plants. You can either take a picture or load an image from the gallery and know the results of your scan. There is also has a page dedicated to gardening articles and blogs for the overall care of the plants and greenery that can help newbie gardeners kick-starting their gardening journey.
 
-### (Built as a hackathon project for Garden Hacks by MLH)
+### (Built as a hackathon project for [Garden Hacks](https://organize.mlh.io/participants/events/6801-garden-hacks) by [MLH](https://mlh.io/))
 
 <br />
 
